@@ -17,11 +17,11 @@ function getRedis() {
 export async function GET() {
   try {
     const r = getRedis()
-    if (!r) return NextResponse.json({ count: 0 })
+    if (!r) return NextResponse.json({ count: 0, debug: 'no_env' })
     const count = (await r.get<number>(KEY)) ?? 0
     return NextResponse.json({ count })
-  } catch {
-    return NextResponse.json({ count: 0 })
+  } catch (e) {
+    return NextResponse.json({ count: 0, debug: String(e) })
   }
 }
 
