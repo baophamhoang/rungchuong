@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin', 'vietnamese'], weight: ['400', '600', '700', '900'] })
 
 const title = 'Chuông Kì Bu | Arsenal Arteta Khóc'
-const description = 'Rung chuông troll fan Arsenal. Bấm để nghe tiếng chuông vang và xem Arteta khóc. Made by Pham Bao Dev.'
-const url = 'https://rungchuong.vercel.app'
+const description = 'Tiếng gì vang thế nhỉ?'
+const url = 'https://rungchuong.phambao.dev/'
 
 export const metadata: Metadata = {
   title,
