@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 interface Meme {
@@ -12,7 +12,8 @@ export default function Home() {
   const [count, setCount] = useState<number | null>(null)
   const [ringing, setRinging] = useState(false)
   const [memes, setMemes] = useState<Meme[]>([])
-  const hasRung = useRef(false)
+  const hasRung = () => localStorage.getItem('rang') === '1'
+  const markRung = () => localStorage.setItem('rang', '1')
 
   useEffect(() => {
     fetch('/api/ring')
@@ -41,9 +42,9 @@ export default function Home() {
     setMemes(prev => [...prev, { id, offset }])
     setTimeout(() => setMemes(prev => prev.filter(m => m.id !== id)), 1300)
 
-    // Only count the first ring per session
-    if (!hasRung.current) {
-      hasRung.current = true
+    // Only count the first ring per browser (persists across refreshes)
+    if (!hasRung()) {
+      markRung()
       try {
         const res = await fetch('/api/ring', { method: 'POST' })
         const data = await res.json()
