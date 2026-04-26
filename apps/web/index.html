@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Rung Chuông Arsenal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="container">
+    <h1 class="title">Chuông kì bu</h1>
+    <p class="subtitle">Tiếng gì vang thế nhỉ?</p>
+
+    <!-- Memes float up from here -->
+    <div class="meme-stage" id="memeStage"></div>
+
+    <!-- Hidden template for meme -->
+    <img
+      id="arteta-template"
+      class="meme-template"
+      src="../../assets/arteta-cry.png"
+      alt="Arteta"
+    />
+
+    <button class="bell-btn" id="bellBtn" aria-label="Ring the bell">
+      <div class="bell-wrap">
+        <!-- Bell SVG -->
+        <svg class="bell-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="bellGrad" cx="40%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#ffe066"/>
+              <stop offset="100%" stop-color="#b8860b"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Bell body -->
+          <path d="M50 8 C28 8 14 26 14 50 L14 78 Q14 84 8 88 L92 88 Q86 84 86 78 L86 50 C86 26 72 8 50 8Z"
+                fill="url(#bellGrad)" filter="url(#glow)"/>
+          <!-- Bell rim -->
+          <ellipse cx="50" cy="88" rx="42" ry="6" fill="#a07820"/>
+          <!-- Bell clapper -->
+          <line x1="50" y1="88" x2="50" y2="102" stroke="#a07820" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="104" r="6" fill="#a07820"/>
+          <!-- Hanger -->
+          <rect x="45" y="2" width="10" height="10" rx="5" fill="#a07820"/>
+        </svg>
+
+        <!-- Arsenal badge overlay -->
+        <div class="arsenal-badge">
+          <img src="../../assets/arsenal-logo.png" alt="Arsenal" />
+        </div>
+      </div>
+    </button>
+
+    <p class="tap-hint">Bấm để rung</p>
+  </div>
+
+  <audio id="bellSound" src="../../assets/bell-soundtrack.mp3" preload="auto"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
