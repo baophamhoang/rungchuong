@@ -3,8 +3,7 @@
 html, body {
   height: 100%;
   overflow: hidden;
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #0a0a0a;
+  background: #080808;
   color: #fff;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
@@ -20,31 +19,19 @@ html, body {
   z-index: 0;
 }
 
-/* subtle noise grain */
-.bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 180px;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
 .container {
   position: relative;
   z-index: 1;
-  height: 100%;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* ── Title ──────────────────────────────────── */
+/* ── Text ───────────────────────────────────── */
 .title {
-  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(2.2rem, 9vw, 4rem);
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -54,12 +41,23 @@ html, body {
 }
 
 .subtitle {
-  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(0.65rem, 2vw, 0.8rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   color: #ffffff40;
   text-transform: uppercase;
+}
+
+.counter {
+  font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+  font-weight: 700;
+  color: #ffffff70;
+  letter-spacing: 0.02em;
+  min-height: 1.4em;
+}
+
+.counter span {
+  color: #ffd700cc;
 }
 
 /* ── Meme stage ─────────────────────────────── */
@@ -70,12 +68,10 @@ html, body {
   z-index: 10;
 }
 
-.meme-template { display: none; }
-
 .meme-popup {
   position: absolute;
-  bottom: 38%;
   left: 50%;
+  bottom: 38%;
   width: clamp(70px, 16vw, 110px);
   border-radius: 12px;
   pointer-events: none;
@@ -94,7 +90,7 @@ html, body {
   100% { transform: translateX(-50%);              opacity: 0;   bottom: 78%; }
 }
 
-/* ── Bell button ────────────────────────────── */
+/* ── Bell ───────────────────────────────────── */
 .bell-btn {
   background: none;
   border: none;
@@ -116,27 +112,10 @@ html, body {
 .bell-svg {
   width: 100%;
   height: 100%;
-  transition: filter 0.1s;
   filter: drop-shadow(0 0 0px #ffd700);
+  transition: filter 0.15s;
 }
 
-.arsenal-badge {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -62%);
-  width: 30%;
-  height: 30%;
-}
-
-.arsenal-badge img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-}
-
-/* Bell ring animation */
 .bell-btn.ringing .bell-wrap {
   animation: bell-shake 0.5s ease-in-out;
 }
@@ -156,8 +135,23 @@ html, body {
   100% { transform: rotate(0deg)   scale(1); }
 }
 
+.arsenal-badge {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+  width: 42%;
+  height: 42%;
+}
+
+.arsenal-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
 .tap-hint {
-  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(0.6rem, 1.8vw, 0.72rem);
   font-weight: 700;
   letter-spacing: 0.35em;
